@@ -9,24 +9,6 @@ interface Task {
 }
 
 const App: React.FC = () => {
-	// load lcalStorage
-	/* 
-	let tasksLocalStorage = localStorage.getItem("EgrenB3S23_ToDoList_Tasks");
-	let taskListLoaded = [];
-	if (tasksLocalStorage !== null) {
-		taskListLoaded = JSON.parse(tasksLocalStorage);
-	}
- 	*/
-
-	/* 
-	const tasksFromStorage = () => {
-		// returns tasks from LS, or an empty array
-		const tasksLocalStorage = localStorage.getItem("EgrenB3S23_ToDoList_Tasks");
-		return tasksLocalStorage ? JSON.parse(tasksLocalStorage) : [];
-		
-	};
- 	*/
-
 	const tasksFromStorage = {
 		get: () => {
 			// Retrieves tasks from localStorage, or returns an empty array if not found
@@ -81,7 +63,7 @@ const App: React.FC = () => {
 		//delets selected task
 
 		// get key for the selected task
-		const selectedTaskKey = parseInt((document.getElementById("selectTask") as HTMLSelectElement).value);
+		const selectedTaskKey = parseInt((document.getElementById("selectTask") as HTMLSelectElement).value); // todo: byt ut, react state
 		// error handling
 		if (isNaN(selectedTaskKey)) {
 			alert("Failed to grab task ID. Is the list empty?");
@@ -98,7 +80,7 @@ const App: React.FC = () => {
 		// loads selected task
 
 		// get key for the selected task
-		const selectedTaskKey = parseInt((document.getElementById("selectTask") as HTMLSelectElement).value);
+		const selectedTaskKey = parseInt((document.getElementById("selectTask") as HTMLSelectElement).value); // todo: byt ut, react state
 		// error handling
 		if (isNaN(selectedTaskKey)) {
 			alert("Failed to grab task ID. Is the list empty?");
@@ -107,14 +89,14 @@ const App: React.FC = () => {
 
 		// set state
 		const [taskToLoad] = tasks.filter((task) => task.key === selectedTaskKey);
-		setTitle(taskToLoad.title); // todo
+		setTitle(taskToLoad.title);
 		setDescription(taskToLoad.description);
 		setIsDone(taskToLoad.isDone);
 	};
 
 	const handleToggleDone = (e: React.MouseEvent<HTMLButtonElement>) => {
 		// get key for the selected task
-		const selectedTaskKey = parseInt((document.getElementById("selectTask") as HTMLSelectElement).value);
+		const selectedTaskKey = parseInt((document.getElementById("selectTask") as HTMLSelectElement).value); // todo: byt ut, react state
 		// error handling
 		if (isNaN(selectedTaskKey)) {
 			alert("Failed to grab task ID. Is the list empty?");
@@ -125,16 +107,6 @@ const App: React.FC = () => {
 		const updatedTasks = tasks.map((task) => (task.key === selectedTaskKey ? { ...task, isDone: !task.isDone } : task));
 		setTasks(updatedTasks);
 		tasksFromStorage.set(updatedTasks);
-
-		/* 
-		const taskKey = tasks.find((task) => task.key === selectedTaskKey);
-		console.log(taskToToggle);
-		if (taskToToggle) {
-			taskToToggle.isDone = !taskToToggle.isDone;
-		}
-		console.log(taskToToggle);
-		setTasks();
-	 */
 	};
 
 	return (
@@ -206,12 +178,4 @@ export default App;
 ▪️◾◼️⬛
 
 📄🧾📃📝📑✍️✏️📒
-*/
-
-/*
-
-	const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {};
-	const handleLoad = (e: React.MouseEvent<HTMLButtonElement>) => {};
-	const handleToggleDone = (e: React.MouseEvent<HTMLButtonElement>) => {};
-
 */
